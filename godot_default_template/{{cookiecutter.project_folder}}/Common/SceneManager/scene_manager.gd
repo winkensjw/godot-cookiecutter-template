@@ -9,9 +9,9 @@ var _scene_to_unload:Node
 var _loading_in_progress:bool = false
 
 func _ready() -> void:
-	Events._scene_invalid.connect(_on_scene_invalid)
-	Events._scene_failed_to_load.connect(_on_scene_failed_to_load)
-	Events._scene_finished_loading.connect(_on_scene_finished_loading)
+	Events.scene_invalid.connect(_on_scene_invalid)
+	Events.scene_failed_to_load.connect(_on_scene_failed_to_load)
+	Events.scene_finished_loading.connect(_on_scene_finished_loading)
  
 func _add_loading_screen(transition_type:String="fade_to_black"):
 	_transition = "no_to_transition" if transition_type == "no_transition" else transition_type
@@ -39,7 +39,7 @@ func _load_scene(scene_path:String) -> void:
 	_scene_path = scene_path
 	var loader = ResourceLoader.load_threaded_request(scene_path)
 	if not ResourceLoader.exists(scene_path) or loader == null:
-		Events._scene_invalid.emit(scene_path)
+		Events.scene_invalid.emit(scene_path)
 		return 		
 	
 	_load_progress_timer = Timer.new()
@@ -55,20 +55,20 @@ func _monitor_load_status() -> void:
 
 	match load_status:
 		ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
-			Events._scene_invalid.emit(_scene_path)
+			Events.scene_invalid.emit(_scene_path)
 			_load_progress_timer.stop()
 			return
 		ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 			if _loading_screen != null:
 				_loading_screen.update_bar(load_progress[0] * 100) # 0.1
 		ResourceLoader.THREAD_LOAD_FAILED:
-			Events._scene_failed_to_load.emit(_scene_path)
+			Events.scene_failed_to_load.emit(_scene_path)
 			_load_progress_timer.stop()
 			return
 		ResourceLoader.THREAD_LOAD_LOADED:
 			_load_progress_timer.stop()
 			_load_progress_timer.queue_free()
-			Events._scene_finished_loading.emit(ResourceLoader.load_threaded_get(_scene_path).instantiate())
+			Events.scene_finished_loading.emit(ResourceLoader.load_threaded_get(_scene_path).instantiate())
 			return
 
 func _on_scene_failed_to_load(path:String) -> void:
