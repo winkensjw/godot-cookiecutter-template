@@ -8,7 +8,7 @@ const LOADING_SCREEN_SCENE:PackedScene = preload("uid://d13yggkw2yru4")
 
 var starting_animation_name:String
 
-static func new() -> LoadingScreen:
+static func create() -> LoadingScreen:
 	return LOADING_SCREEN_SCENE.instantiate();
 
 func _ready() -> void:

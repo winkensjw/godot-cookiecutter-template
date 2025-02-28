@@ -15,7 +15,7 @@ func _ready() -> void:
  
 func _add_loading_screen(transition_type:String="fade_to_black"):
 	_transition = "no_to_transition" if transition_type == "no_transition" else transition_type
-	_loading_screen = LoadingScreen.new()
+	_loading_screen = LoadingScreen.create()
 	add_child(_loading_screen)
 	_loading_screen.start_transition(_transition)
 	
