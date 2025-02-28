@@ -11,15 +11,15 @@ config_version=5
 [application]
 
 config/name="{{cookiecutter.project_name}}"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 
 [autoload]
 
-Events="*res://scenes/events.gd"
-Globals="*res://scenes/globals.gd"
-SaveManager="*res://scenes/save_manager.gd"
-SceneManager="*res://scenes/scene_manager.gd"
+Events="*res://Common/Events/events.gd"
+Globals="*res://globals.gd"
+SaveManager="*res://Common/SaveManager/save_manager.gd"
+SceneManager="*res://Common/SceneManager/scene_manager.gd"
 
 [debug]
 

@@ -1,7 +1,5 @@
 class_name LoadingScreen extends CanvasLayer
 
-signal transition_in_complete
-
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var anim_player: AnimationPlayer = %AnimationPlayer
 @onready var timer: Timer = $Timer
@@ -38,7 +36,7 @@ func finish_transition() -> void:
 	queue_free()
 
 func report_midpoint() -> void:
-	transition_in_complete.emit()
+	Events.transition_in_complete.emit()
 
 func _on_timer_timeout() -> void:
 	progress_bar.visible = true

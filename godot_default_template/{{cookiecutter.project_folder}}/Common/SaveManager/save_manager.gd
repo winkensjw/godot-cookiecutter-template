@@ -25,6 +25,6 @@ func _load_save_file() -> Dictionary:
 	var json = JSON.new()
 	var parse_result = json.parse(json_string)
 	if not parse_result == OK:
-		print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+		push_error("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
 		return {}
 	return json.data
