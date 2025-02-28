@@ -1,6 +1,5 @@
 extends Node
 
-var _loading_screen_scene:PackedScene = preload("LoadingScreen/loading_screen.tscn")
 var _loading_screen:LoadingScreen
 var _transition:String
 var _scene_path:String
@@ -16,7 +15,7 @@ func _ready() -> void:
  
 func _add_loading_screen(transition_type:String="fade_to_black"):
 	_transition = "no_to_transition" if transition_type == "no_transition" else transition_type
-	_loading_screen = _loading_screen_scene.instantiate() as LoadingScreen
+	_loading_screen = LoadingScreen.new()
 	add_child(_loading_screen)
 	_loading_screen.start_transition(_transition)
 	

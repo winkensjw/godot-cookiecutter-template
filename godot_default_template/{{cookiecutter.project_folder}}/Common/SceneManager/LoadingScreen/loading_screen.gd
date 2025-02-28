@@ -1,10 +1,15 @@
 class_name LoadingScreen extends CanvasLayer
 
+const LOADING_SCREEN_SCENE:PackedScene = preload("uid://d13yggkw2yru4")
+
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var anim_player: AnimationPlayer = %AnimationPlayer
 @onready var timer: Timer = $Timer
 
 var starting_animation_name:String
+
+static func new() -> LoadingScreen:
+	return LOADING_SCREEN_SCENE.instantiate();
 
 func _ready() -> void:
 	# only show progress bar if loading takes too long
