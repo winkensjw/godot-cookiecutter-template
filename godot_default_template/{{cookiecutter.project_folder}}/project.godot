@@ -21,6 +21,7 @@ Globals="*res://globals.gd"
 SaveManager="*res://Common/SaveManager/save_manager.gd"
 SceneManager="*res://Common/SceneManager/scene_manager.gd"
 Tweens="*res://Common/Tweens/Tweens.gd"
+Constants="*res://constants.gd"
 
 [debug]
 

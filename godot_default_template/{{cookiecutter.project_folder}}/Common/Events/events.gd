@@ -9,4 +9,7 @@ signal scene_finished_loading(scene)
 signal scene_invalid(scene_path:String)
 signal scene_failed_to_load(scene_path:String)
 
+# Main Menu
+signal main_menu_closed
+
 # Add events here
