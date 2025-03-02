@@ -1,6 +1,6 @@
 class_name LoadingScreen extends CanvasLayer
 
-const LOADING_SCREEN_SCENE:PackedScene = preload("uid://d13yggkw2yru4")
+const LOADING_SCREEN_SCENE:PackedScene = preload(Constants.LOADING_SCREENE_SCENE_PATH)
 
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var anim_player: AnimationPlayer = %AnimationPlayer

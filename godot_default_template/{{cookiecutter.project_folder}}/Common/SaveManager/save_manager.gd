@@ -2,7 +2,7 @@ extends Node
 
 const SAVE_LOCATION = "user://{{cookiecutter.project_folder}}.save"
 
-var settings : SaveManagerSettings = preload("uid://y8o3y218s7wp")
+var settings : SaveManagerSettings = preload(Constants.SAVE_MANAGER_SETTINGS_RESOURCE_PATH)
 
 var data : Dictionary = {}
 

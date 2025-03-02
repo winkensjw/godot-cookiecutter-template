@@ -9,10 +9,10 @@ func _ready() -> void:
 	_add_main_menu.call_deferred()
 	
 func _add_main_menu() -> void:
-	SceneManager.change_scenes("Entities/MainMenu/main_menu.tscn", self, null, "no_transition")
+	SceneManager.change_scenes(Constants.MAIN_MENU_SCENE_PATH, self, null, "no_transition")
 	
 func _on_scene_changed(loaded_scene : Node) -> void:
 	current_scene = loaded_scene
 	
 func _on_main_menu_closed() -> void:
-	SceneManager.change_scenes("Entities/Game/game.tscn", self, current_scene)
+	SceneManager.change_scenes(Constants.GAME_SCENE_PATH, self, current_scene)
