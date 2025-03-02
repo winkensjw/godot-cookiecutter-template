@@ -17,7 +17,6 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 [autoload]
 
 Events="*res://Common/Events/events.gd"
-Globals="*res://globals.gd"
 SaveManager="*res://Common/SaveManager/save_manager.gd"
 SceneManager="*res://Common/SceneManager/scene_manager.gd"
 Tweens="*res://Common/Tweens/Tweens.gd"
@@ -26,9 +25,14 @@ Constants="*res://constants.gd"
 [debug]
 
 gdscript/warnings/unused_signal=0
+gdscript/warnings/untyped_declaration=1
 
 [display]
 
 window/size/viewport_width={{cookiecutter.viewport_width}}
 window/size/viewport_height={{cookiecutter.viewport_height}}
 window/stretch/mode="viewport"
+
+[global_group]
+
+persistable="Objects that are persistable and offer a save_data, load_data and get_save_id method"

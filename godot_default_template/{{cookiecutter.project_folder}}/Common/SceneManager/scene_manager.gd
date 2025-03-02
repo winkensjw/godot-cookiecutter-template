@@ -1,19 +1,19 @@
 extends Node
 
-var _loading_screen:LoadingScreen
-var _transition:String
-var _scene_path:String
-var _load_progress_timer:Timer
-var _load_scene_into:Node
-var _scene_to_unload:Node
-var _loading_in_progress:bool = false
+var _loading_screen : LoadingScreen
+var _transition : String
+var _scene_path : String
+var _load_progress_timer : Timer
+var _load_scene_into : Node
+var _scene_to_unload : Node
+var _loading_in_progress : bool = false
 
 func _ready() -> void:
 	Events.scene_invalid.connect(_on_scene_invalid)
 	Events.scene_failed_to_load.connect(_on_scene_failed_to_load)
 	Events.scene_finished_loading.connect(_on_scene_finished_loading)
  
-func _add_loading_screen(transition_type:String="fade_to_black"):
+func _add_loading_screen(transition_type:String="fade_to_black") -> void:
 	_transition = "no_to_transition" if transition_type == "no_transition" else transition_type
 	_loading_screen = LoadingScreen.create()
 	add_child(_loading_screen)
@@ -37,7 +37,7 @@ func _load_scene(scene_path:String) -> void:
 	Events.load_start.emit(_loading_screen)
 		
 	_scene_path = scene_path
-	var loader = ResourceLoader.load_threaded_request(scene_path)
+	var loader : Error = ResourceLoader.load_threaded_request(scene_path)
 	if not ResourceLoader.exists(scene_path) or loader == null:
 		Events.scene_invalid.emit(scene_path)
 		return 		
@@ -50,8 +50,8 @@ func _load_scene(scene_path:String) -> void:
 	_load_progress_timer.start()
 
 func _monitor_load_status() -> void:
-	var load_progress = []
-	var load_status = ResourceLoader.load_threaded_get_status(_scene_path, load_progress)
+	var load_progress : Array = []
+	var load_status : ResourceLoader.ThreadLoadStatus = ResourceLoader.load_threaded_get_status(_scene_path, load_progress)
 
 	match load_status:
 		ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
@@ -72,13 +72,13 @@ func _monitor_load_status() -> void:
 			return
 
 func _on_scene_failed_to_load(path:String) -> void:
-	printerr("error: Failed to load resource: '%s'" % [path])	
+	push_error("error: Failed to load resource: '%s'" % [path])	
 
 func _on_scene_invalid(path:String) -> void:
-	printerr("error: Cannot load resource: '%s'" % [path])
+	push_error("error: Cannot load resource: '%s'" % [path])
 	
-func _on_scene_finished_loading(incoming_scene) -> void:
-	var outgoing_scene = _scene_to_unload
+func _on_scene_finished_loading(incoming_scene : Node) -> void:
+	var outgoing_scene : Node = _scene_to_unload
 
 	if outgoing_scene != null:	
 		if outgoing_scene.has_method("get_data") and incoming_scene.has_method("receive_data"):

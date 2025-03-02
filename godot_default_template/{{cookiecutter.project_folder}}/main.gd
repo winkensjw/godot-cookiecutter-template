@@ -1,6 +1,6 @@
 extends Node2D
 
-var current_scene
+var current_scene : Node
 
 func _ready() -> void:
 	Events.load_complete.connect(_on_scene_changed)
@@ -11,7 +11,7 @@ func _ready() -> void:
 func _add_main_menu() -> void:
 	SceneManager.change_scenes("Entities/MainMenu/main_menu.tscn", self, null, "no_transition")
 	
-func _on_scene_changed(loaded_scene:Node) -> void:
+func _on_scene_changed(loaded_scene : Node) -> void:
 	current_scene = loaded_scene
 	
 func _on_main_menu_closed() -> void:
