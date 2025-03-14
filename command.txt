@@ -1,1 +1,3 @@
+Run as admin:
+
 python generate.py
