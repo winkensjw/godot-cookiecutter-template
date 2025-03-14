@@ -9,3 +9,5 @@ Click search bar
 	"GDScript Formatter & Linter" 
 	
 Activate format on save in settings
+
+Files > Preferences > Settings, Search for files:exclude and add "external/"
