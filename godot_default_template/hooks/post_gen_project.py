@@ -18,7 +18,8 @@ def add_submodule(submodule_repo, submodule_path):
 # Function to add a symlink from the addons folder to the submodule
 def add_simlink(symlink_target, symlink_name):
 	if not os.path.exists(symlink_name):
-		# manual command: ln -s ../externa/path/to/addon/folder addon_name
+		# manual command linux (run as admin from addons folder in project): ln -s ../external/path/to/addon/folder addon_name
+		# manual command windows(run as admin from addons folder in project): mklink /D addon_name ..\external\path\to\addon\folder
 		os.symlink(symlink_target, symlink_name)
 		print("Symlink created successfully")
 	else:
