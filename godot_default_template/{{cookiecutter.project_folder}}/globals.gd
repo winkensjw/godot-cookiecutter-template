@@ -11,9 +11,10 @@
 
 extends Node
 
+enum WindowMode { FULL_SCREEN, WINDOWED, BORDERLESS }
 
 ## Save identifier for persistent data.
-const SAVE_ID: String = FIXME -> add uuid here
+const SAVE_ID: String = "{{ uuid4() }}"
 
 ## Version identifier for save data.
 const VERSION_ID: String = "1"

@@ -1,6 +1,9 @@
 {
   "project_folder": "new-project",
   "project_name": "New Project",
-  "viewport_width": "1280",
-  "viewport_height": "720"
+  "viewport_width": "1920",
+  "viewport_height": "1080",
+  "_extensions": [
+    "cookiecutter.extensions.UUIDExtension"
+  ]
 }
