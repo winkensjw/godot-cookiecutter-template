@@ -9,6 +9,8 @@ const AUDIO_SCENE_PATH: String = "res://Entities/Audio/audio.tscn"
 
 # Entities
 const GAME_SCENE_PATH: String = "res://Entities/Game/game.tscn"
+
+# Main Menu
 const MAIN_MENU_SCENE_PATH: String = "res://Entities/MainMenu/main_menu.tscn"
 
 # Put constants here

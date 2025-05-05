@@ -11,3 +11,6 @@
 
 class_name MainMenu
 extends CanvasLayer
+
+## Logger instance for this class.
+var _log: Log = Log.new("MainMenu")
